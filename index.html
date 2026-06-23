@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ท่องแดนดาราศาสตร์: ระบบสุริยะบ้านของเรา</title>
+    
+    <!-- Meta tags for SEO & Mobile friendliness -->
+    <meta name="description" content="สื่อการเรียนรู้แบบโต้ตอบ (Interactive) เรื่องระบบสุริยะและปรากฏการณ์น้ำขึ้นน้ำลง สำหรับนักเรียนชั้นประถมศึกษาปีที่ 4 โรงเรียนบ้านวังพลับ">
+    <meta name="author" content="นายสุทธิพงษ์ อนุสรณ์ประดิษฐ์">
+    
+    <!-- Google Fonts: Kanit (Thai) & Orbitron (Cosmic Science) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Dashboard Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="cosmic-theme">
+    <!-- Starry background wrapper -->
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+    
+    <!-- Navigation Bar: Spaceship Dashboard Concept -->
+    <header class="spaceship-header">
+        <div class="header-logo">
+            <i class="fa-solid fa-user-astronaut nav-avatar"></i>
+            <div class="logo-text">
+                <h1>ท่องแดนดาราศาสตร์</h1>
+                <span class="sub-logo">ระบบสุริยะบ้านของเรา</span>
+            </div>
+        </div>
+        
+        <nav class="dashboard-nav">
+            <button class="nav-btn active" data-target="welcome-view">
+                <i class="fa-solid fa-house"></i> หน้าแรก
+            </button>
+            <button class="nav-btn" data-target="explorer-view">
+                <i class="fa-solid fa-circle-notch"></i> ท่องสุริยะ
+            </button>
+            <button class="nav-btn" data-target="game-view">
+                <i class="fa-solid fa-gamepad"></i> เกมคัดแยก
+            </button>
+            <button class="nav-btn" data-target="tides-view">
+                <i class="fa-solid fa-water"></i> น้ำขึ้น-น้ำลง
+            </button>
+            <button class="nav-btn" data-target="leaderboard-view">
+                <i class="fa-solid fa-ranking-star"></i> กระดานคะแนน
+            </button>
+            <button class="nav-btn" data-target="quiz-view">
+                <i class="fa-solid fa-graduation-cap"></i> แบบทดสอบ
+            </button>
+        </nav>
+
+        <div class="audio-panel">
+            <button id="sound-toggle-btn" title="เปิด/ปิด เสียงประกอบ">
+                <i class="fa-solid fa-volume-high"></i>
+            </button>
+            <div class="creator-badge">
+                <span class="school">ร.ร.บ้านวังพลับ</span>
+                <span class="grade">ป.4</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="spaceship-viewport">
+        
+        <!-- 1. WELCOME VIEW -->
+        <section id="welcome-view" class="view-section active">
+            <div class="welcome-container">
+                <div class="welcome-header animate-fade-in">
+                    <span class="tagline">บทเรียนคอมพิวเตอร์ช่วยสอน (CAI) ดาราศาสตร์ ป.4</span>
+                    <h2>ท่องแดนดาราศาสตร์: ระบบสุริยะบ้านของเรา</h2>
+                    <div class="meta-divider"></div>
+                </div>
+
+                <div class="welcome-grid">
+                    <div class="welcome-card text-card">
+                        <h3><i class="fa-solid fa-rocket text-neon-blue"></i> ยินดีต้อนรับนักเดินทางอวกาศตัวน้อย!</h3>
+                        <p>มาร่วมเดินทางสำรวจระบบสุริยะอันกว้างใหญ่ไปด้วยกัน! ระบบสุริยะเปรียบเสมือนบ้านหลังใหญ่ที่มีดวงอาทิตย์เป็นศูนย์กลาง และมีสมาชิกมากมายทั้งดาวเคราะห์หิน ดาวเคราะห์แก๊ส และวัตถุท้องฟ้าลึกลับอื่นๆ อีกเพียบ!</p>
+                        <p>นอกจากนี้ น้องๆ จะได้เรียนรู้ว่าดวงจันทร์ดวงเล็กๆ ของเรา สร้างปรากฏการณ์ที่ยิ่งใหญ่อย่าง "น้ำขึ้น-น้ำลง" บนโลกได้อย่างไร ผ่านแบบจำลองสามมิติที่ขยับได้!</p>
+                        
+                        <div class="cai-info">
+                            <div class="info-item">
+                                <span class="label">ผู้พัฒนาสื่อ:</span>
+                                <span class="val font-semibold">นายสุทธิพงษ์ อนุสรณ์ประดิษฐ์</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">สถานศึกษา:</span>
+                                <span class="val">โรงเรียนบ้านวังพลับ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="welcome-card mission-card">
+                        <h3><i class="fa-solid fa-compass-drafting text-neon-pink"></i> แผนที่การเดินทาง (ภารกิจของน้องๆ)</h3>
+                        <ul class="mission-list">
+                            <li>
+                                <div class="mission-num">1</div>
+                                <div class="mission-desc"><strong>สำรวจระบบสุริยะ:</strong> เรียนรู้เกี่ยวกับดวงอาทิตย์ และดาวเคราะห์ทั้ง 8 ดวง</div>
+                            </li>
+                            <li>
+                                <div class="mission-num">2</div>
+                                <div class="mission-desc"><strong>เล่นเกมผู้พิทักษ์:</strong> แยกประเภทดาวเคราะห์หินและดาวเคราะห์แก๊สให้ถูกต้อง</div>
+                            </li>
+                            <li>
+                                <div class="mission-num">3</div>
+                                <div class="mission-desc"><strong>ทดลองวิทยาศาสตร์:</strong> สังเกตแรงดึงดูดของดวงจันทร์และดวงอาทิตย์ที่ทำให้น้ำขึ้นน้ำลง</div>
+                            </li>
+                            <li>
+                                <div class="mission-num">4</div>
+                                <div class="mission-desc"><strong>ทำแบบทดสอบและท้าชิง:</strong> ทำคะแนนให้ได้ 8/10 ขึ้นไปเพื่อรับเกียรติบัตร และบันทึกคะแนนแข่งขันบนกระดานคะแนน!</div>
+                            </li>
+                        </ul>
+                        <button class="btn btn-primary start-mission-btn" onclick="switchView('explorer-view')">
+                            เริ่มภารกิจสำรวจเลย! <i class="fa-solid fa-angles-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. EXPLORER VIEW -->
+        <section id="explorer-view" class="view-section">
+            <div class="explorer-layout">
+                <!-- Left: Orbit Simulator Screen -->
+                <div class="space-screen">
+                    <div class="screen-header">
+                        <span><i class="fa-solid fa-radar"></i> เรดาร์ตรวจจับระบบสุริยะ (คลิกที่ดวงดาวเพื่อเรียนรู้)</span>
+                        <div class="orbit-controls">
+                            <button id="btn-pause-orbit" class="btn-orbit-control" title="เล่น/หยุดเวลา">
+                                <i class="fa-solid fa-pause"></i>
+                            </button>
+                            <div class="speed-slider-wrap">
+                                <label for="orbit-speed"><i class="fa-solid fa-gauge-high"></i> ความเร็ว:</label>
+                                <input type="range" id="orbit-speed" min="1" max="10" value="5">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Star system visualization -->
+                    <div class="solar-system-map">
+                        <div class="sun-glow"></div>
+                        <!-- Central Star (Sun) -->
+                        <div class="celestial-body sun active" data-body="sun" id="sun">
+                            <div class="body-sphere"></div>
+                            <span class="body-label">ดวงอาทิตย์</span>
+                        </div>
+                        
+                        <!-- Orbit Rings & Planets -->
+                        <!-- Mercury -->
+                        <div class="orbit-ring mercury-orbit">
+                            <div class="celestial-body planet mercury" data-body="mercury" id="mercury">
+                                <div class="body-sphere"></div>
+                                <span class="body-label">ดาวพุธ</span>
+                            </div>
+                        </div>
+                        <!-- Venus -->
+                        <div class="orbit-ring venus-orbit">
+                            <div class="celestial-body planet venus" data-body="venus" id="venus">
+                                <div class="body-sphere"></div>
+                                <span class="body-label">ดาวศุกร์</span>
+                            </div>
+                        </div>
+                        <!-- Earth -->
+                        <div class="orbit-ring earth-orbit">
+                            <div class="celestial-body planet earth" data-body="earth" id="earth">
+                                <div class="body-sphere"></div>
+                                <span class="body-label">โลก</span>
+                            </div>
+                        </div>
+                        <!-- Mars -->
+                        <div class="orbit-ring mars-orbit">
+                            <div class="celestial-body planet mars" data-body="mars" id="mars">
+                                <div class="body-sphere"></div>
+                                <span class="body-label">ดาวอังคาร</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Asteroid Belt -->
+                        <div class="asteroid-belt-visual">
+                            <span class="asteroid-label">แถบดาวเคราะห์น้อย</span>
+                        </div>
+                        
+                        <!-- Jupiter -->
+                        <div class="orbit-ring jupiter-orbit">
+                            <div class="celestial-body planet jupiter" data-body="jupiter" id="jupiter">
+                                <div class="body-sphere"></div>
+                                <span class="body-label">ดาวพฤหัสบดี</span>
+                            </div>
+                        </div>
+                        <!-- Saturn -->
+                        <div class="orbit-ring saturn-orbit">
+                            <div class="celestial-body planet saturn" data-body="saturn" id="saturn">
+                                <div class="body-sphere">
+                                    <div class="saturn-rings"></div>
+                                </div>
+                                <span class="body-label">ดาวเสาร์</span>
+                            </div>
+                        </div>
+                        <!-- Uranus -->
+                        <div class="orbit-ring uranus-orbit">
+                            <div class="celestial-body planet uranus" data-body="uranus" id="uranus">
+                                <div class="body-sphere"></div>
+                                <span class="body-label">ดาวยูเรนัส</span>
+                            </div>
+                        </div>
+                        <!-- Neptune -->
+                        <div class="orbit-ring neptune-orbit">
+                            <div class="celestial-body planet neptune" data-body="neptune" id="neptune">
+                                <div class="body-sphere"></div>
+                                <span class="body-label">ดาวเนปจูน</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Information Console -->
+                <div class="info-console">
+                    <div id="default-info-prompt" class="info-prompt active">
+                        <i class="fa-solid fa-hand-pointer pulse-animation"></i>
+                        <h4>ข้อมูลแผงสแกนเนอร์</h4>
+                        <p>กรุณากดคลิกที่ <strong>ดวงอาทิตย์</strong> หรือ <strong>ดาวเคราะห์</strong> ดวงใดก็ได้บนแผนที่จำลองอวกาศ เพื่อดึงข้อมูลเชิงลึกขึ้นมาแสดงบนแผงนี้</p>
+                        
+                        <div class="other-wonders-shortcuts">
+                            <h5><i class="fa-solid fa-meteor text-neon-orange"></i> วัตถุท้องฟ้าน่าสนใจอื่นๆ:</h5>
+                            <div class="badge-grid">
+                                <button class="wonder-btn" data-body="pluto">ดาวเคราะห์แคระพลูโต</button>
+                                <button class="wonder-btn" data-body="asteroids">แถบดาวเคราะห์น้อย</button>
+                                <button class="wonder-btn" data-body="comet">ดาวหาง (นักเดินทางน้ำแข็ง)</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Planet Info Card -->
+                    <div id="planet-info-card" class="info-card-container">
+                        <div class="card-header">
+                            <div class="card-title-group">
+                                <h3 id="card-name-th">โลก</h3>
+                                <span id="card-name-en">Earth</span>
+                            </div>
+                            <span id="card-type-badge" class="type-badge terrestrial">ดาวเคราะห์หิน</span>
+                        </div>
+                        
+                        <div class="card-visual-summary">
+                            <div id="card-illustration" class="card-illustration"></div>
+                        </div>
+
+                        <div class="card-body">
+                            <p id="card-description">โลกเป็นดาวเคราะห์ลำดับที่สามจากดวงอาทิตย์ และเป็นโลกใบเดียวที่เรารู้จักที่มีสิ่งมีชีวิตอาศัยอยู่...</p>
+                            
+                            <div class="planet-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">คาบการโคจร (เวลา 1 ปี)</span>
+                                    <span class="stat-val" id="stat-orbit">365 วัน</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">ดวงจันทร์บริวาร</span>
+                                    <span class="stat-val" id="stat-moons">1 ดวง</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">ลักษณะเด่น</span>
+                                    <span class="stat-val" id="stat-highlight">มีน้ำในสถานะของเหลวและมีชั้นบรรยากาศเอื้อต่อชีวิต</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer">
+                            <button class="btn btn-secondary back-to-prompt-btn">
+                                <i class="fa-solid fa-chevron-left"></i> กลับไปหน้าสแกนหลัก
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. CLASSIFICATION GAME VIEW -->
+        <section id="game-view" class="view-section">
+            <div class="game-container">
+                <div class="section-title">
+                    <h2><i class="fa-solid fa-gamepad text-neon-pink"></i> เกมภารกิจผู้พิทักษ์: แยกแยะประเภทดวงดาว</h2>
+                    <p>ดาวเคราะห์หลักทั้ง 8 ดวง สามารถแบ่งตามลักษณะพื้นผิวได้ 2 ประเภทใหญ่ๆ น้องๆ ช่วยพี่สุทธิพงษ์จัดหมวดหมู่พวกมันเข้ากระสวยอวกาศให้ถูกต้องหน่อยนะ!</p>
+                </div>
+
+                <div class="game-playground">
+                    <!-- Source: Planets to drag -->
+                    <div class="planets-source-panel">
+                        <h4><i class="fa-solid fa-box-open"></i> ดาวเคราะห์ที่ต้องคัดแยก</h4>
+                        <div class="planets-drag-container" id="source-planets-container">
+                            <!-- Draggable Planet Cards (Will be rendered dynamically by JS) -->
+                        </div>
+                    </div>
+
+                    <!-- Targets: Two Spaceships/Boxes -->
+                    <div class="game-targets-panel">
+                        <!-- Target 1: Terrestrial -->
+                        <div class="dropzone-box" id="dropzone-terrestrial" data-group="terrestrial">
+                            <div class="dropzone-header">
+                                <i class="fa-solid fa-gem dropzone-icon text-neon-blue"></i>
+                                <h3>ดาวเคราะห์หิน (Terrestrial)</h3>
+                                <span class="dropzone-hint">พื้นผิวแข็งเหมือนก้อนหิน</span>
+                            </div>
+                            <div class="dropzone-slots" id="slots-terrestrial"></div>
+                        </div>
+
+                        <!-- Target 2: Gas Giants -->
+                        <div class="dropzone-box" id="dropzone-gas" data-group="gas">
+                            <div class="dropzone-header">
+                                <i class="fa-solid fa-wind dropzone-icon text-neon-pink"></i>
+                                <h3>ดาวเคราะห์แก๊ส (Gas Giants)</h3>
+                                <span class="dropzone-hint">ขนาดใหญ่มาก ส่วนใหญ่เป็นแก๊ส</span>
+                            </div>
+                            <div class="dropzone-slots" id="slots-gas"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-control-panel">
+                    <div id="game-score-display">จัดหมวดหมู่สำเร็จ: <span id="current-score">0</span> / 8 ดวง</div>
+                    <div class="game-buttons">
+                        <button class="btn btn-secondary" id="btn-reset-game">
+                            <i class="fa-solid fa-arrow-rotate-left"></i> เล่นใหม่
+                        </button>
+                        <button class="btn btn-primary" id="btn-check-game">
+                            <i class="fa-solid fa-circle-check"></i> ตรวจสอบคำตอบ
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Game Message Modal -->
+                <div id="game-feedback-overlay" class="feedback-overlay">
+                    <div class="feedback-card">
+                        <div id="feedback-icon-container"></div>
+                        <h4 id="feedback-title">สุดยอดไปเลย!</h4>
+                        <p id="feedback-message">น้องๆ สามารถคัดแยกประเภทดาวเคราะห์หินและดาวเคราะห์แก๊สได้อย่างถูกต้องแม่นยำครบทั้งหมด!</p>
+                        <button class="btn btn-primary" onclick="closeGameFeedback()">ลุยภารกิจถัดไป</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. TIDE SIMULATOR VIEW -->
+        <section id="tides-view" class="view-section">
+            <div class="tide-container">
+                <div class="tide-layout">
+                    <!-- Left: Canvas and Visual -->
+                    <div class="tide-simulator-screen">
+                        <div class="screen-header">
+                            <span><i class="fa-solid fa-compass"></i> แบบจำลองการเกิดน้ำขึ้น-น้ำลง (แรงดึงดูดระหว่างดวงดาว)</span>
+                            <div class="simulator-modes">
+                                <button id="btn-tide-play" class="btn-simulator-mode active"><i class="fa-solid fa-play"></i> เล่น</button>
+                                <button id="btn-tide-pause" class="btn-simulator-mode"><i class="fa-solid fa-pause"></i> หยุดนิ่ง</button>
+                            </div>
+                        </div>
+
+                        <!-- Canvas Workspace -->
+                        <div class="canvas-container">
+                            <canvas id="tide-simulator-canvas" width="680" height="400"></canvas>
+                        </div>
+
+                        <!-- Manual Moon orbit slider -->
+                        <div class="slider-control-panel">
+                            <div class="control-row">
+                                <label for="moon-angle-slider"><i class="fa-solid fa-moon"></i> หมุนตำแหน่งดวงจันทร์:</label>
+                                <input type="range" id="moon-angle-slider" min="0" max="360" value="0">
+                                <span class="angle-display"><span id="moon-angle-val">0</span>°</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Info Panel & Controls -->
+                    <div class="tide-explanation-console">
+                        <h3><i class="fa-solid fa-water text-neon-blue"></i> ปรากฏการณ์น้ำขึ้น-น้ำลง</h3>
+                        
+                        <div class="tide-live-status">
+                            <span class="status-title">สถานะความตึงของน้ำปัจจุบัน:</span>
+                            <div id="tide-status-badge" class="tide-badge-active spring-tide">
+                                <i class="fa-solid fa-circle-radiation"></i> น้ำเกิด (Spring Tide) - ขึ้นสูงสุด/ลงต่ำสุด
+                            </div>
+                            <p id="tide-status-detail">ดวงจันทร์และดวงอาทิตย์เรียงตัวอยู่ในแนวเส้นตรงเดียวกัน ทำให้แรงดึงดูดของทั้งสองดวงมารวมพลังกันดึงน้ำบนโลกให้โปร่งออกมากที่สุด</p>
+                        </div>
+
+                        <div class="scientific-explanation">
+                            <h4><i class="fa-solid fa-graduation-cap"></i> สรุปความรู้เรื่องน้ำขึ้น-น้ำลง (สำหรับ ป.4)</h4>
+                            <ul>
+                                <li>
+                                    <strong>ใครมีอิทธิพลมากที่สุด?</strong> 
+                                    ดวงจันทร์มีขนาดเล็กกว่าดวงอาทิตย์มาก แต่เพราะอยู่ใกล้โลกมากกว่า จึงส่งแรงดึงดูดกระทำต่อน้ำบนโลกมากกว่า
+                                </li>
+                                <li>
+                                    <strong>กลไกแม่เหล็กอวกาศ:</strong> 
+                                    แรงดึงดูดของดวงจันทร์จะดึงให้น้ำในมหาสมุทรด้านที่หันหาดวงจันทร์ (และด้านตรงข้าม) โป่งออก ทำให้น้ำสูงขึ้น เรียกว่า <strong>"น้ำขึ้น"</strong>
+                                </li>
+                                <li>
+                                    <strong>ประเภทของช่วงน้ำ:</strong>
+                                    <ul>
+                                        <li><strong class="text-neon-pink">น้ำเกิด (Spring Tide):</strong> ดวงอาทิตย์ โลก ดวงจันทร์ เรียงตัวตรงกัน (วันขึ้น 15 ค่ำ และ แรม 15 ค่ำ) น้ำขึ้นสูงสุดและลงต่ำสุด</li>
+                                        <li><strong class="text-neon-blue">น้ำตาย (Neap Tide):</strong> ดวงจันทร์ทำมุมฉากกับโลกและดวงอาทิตย์ (วันขึ้น 8 ค่ำ และ แรม 8 ค่ำ) ระดับน้ำเปลี่ยนแปลงน้อยมาก</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. QUIZ VIEW -->
+        <section id="quiz-view" class="view-section">
+            <div class="quiz-outer-container">
+                <!-- Intro Card -->
+                <div id="quiz-intro-card" class="quiz-card active">
+                    <div class="quiz-icon"><i class="fa-solid fa-user-shield text-neon-blue"></i></div>
+                    <h2>ทดสอบความเป็น "ผู้พิทักษ์ระบบสุริยะ"</h2>
+                    <p>เพื่อผ่านภารกิจสำรวจครั้งนี้ น้องๆ จะต้องตอบแบบทดสอบ 10 ข้อเกี่ยวกับความรู้ดาราศาสตร์ที่เรียนไป คะแนนของน้องๆ จะถูกบันทึกขึ้นกระดานคะแนนเพื่อแข่งขันจัดอันดับ และหากทำคะแนนได้ 8 คะแนนขึ้นไป (80%) จะได้รับเกียรติบัตรทันที!</p>
+                    
+                    <div class="form-group">
+                        <label for="student-name-input">กรอกชื่อ-นามสกุลของน้องๆ:</label>
+                        <input type="text" id="student-name-input" placeholder="เด็กหญิง/เด็กชาย สุดหล่อ เรียนเก่ง" maxlength="50">
+                        <span class="input-error" id="name-input-error">กรุณากรอกชื่อก่อนเริ่มทำข้อสอบนะจ๊ะ</span>
+                    </div>
+
+                    <button class="btn btn-primary btn-large" id="btn-start-quiz">
+                        เริ่มทำข้อสอบอวกาศ! <i class="fa-solid fa-gamepad"></i>
+                    </button>
+                </div>
+
+                <!-- Questions Card -->
+                <div id="quiz-question-card" class="quiz-card">
+                    <div class="quiz-progress-bar-wrap">
+                        <div class="progress-info">
+                            <span>คำถามข้อที่ <span id="current-question-num">1</span>/10</span>
+                            <span>ความก้าวหน้า: <span id="current-progress-percent">10%</span></span>
+                        </div>
+                        <div class="progress-bar-track">
+                            <div class="progress-bar-fill" id="quiz-progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="question-container">
+                        <h3 id="question-text">ดวงอาทิตย์เปรียบเสมือนดาวฤกษ์ในเรื่องใดต่อไปนี้?</h3>
+                        <div class="options-grid" id="quiz-options-container">
+                            <!-- Dynamic choices will render here -->
+                        </div>
+                    </div>
+
+                    <div class="quiz-card-footer">
+                        <button class="btn btn-primary" id="btn-submit-answer" disabled>
+                            ส่งคำตอบ <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Score Card -->
+                <div id="quiz-result-card" class="quiz-card">
+                    <div class="result-celebration">
+                        <div class="result-trophy-icon" id="result-icon-div">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h2>สรุปผลการทดสอบภารกิจ</h2>
+                        <div class="score-display">
+                            <span class="score-number" id="final-score-val">10</span>
+                            <span class="score-max">/ 10 คะแนน</span>
+                        </div>
+                        <p id="result-comment">สุดยอดเลยนักบินอวกาศน้อย! น้องได้รับระดับผู้ปกป้องสุริยะระดับสูงสุด!</p>
+                    </div>
+
+                    <!-- Certificate Generation Trigger Box -->
+                    <div id="certificate-claim-box" class="claim-box">
+                        <div class="claim-info">
+                            <h3><i class="fa-solid fa-certificate text-neon-yellow"></i> รับเกียรติบัตรเกียรตินิยม</h3>
+                            <p>เนื่องจากทำคะแนนได้ตั้งแต่ 80% ขึ้นไป (8/10 คะแนน) น้องๆ สามารถกดปุ่มเพื่อพิมพ์หรือบันทึกเกียรติบัตรเก็บไว้ได้เลย</p>
+                        </div>
+                        <button class="btn btn-yellow" id="btn-show-certificate">
+                            <i class="fa-solid fa-print"></i> แสดงเกียรติบัตร
+                        </button>
+                    </div>
+
+                    <div class="quiz-result-buttons">
+                        <button class="btn btn-secondary" id="btn-restart-quiz">
+                            <i class="fa-solid fa-rotate-right"></i> ทำแบบทดสอบใหม่
+                        </button>
+                        <button class="btn btn-primary" onclick="switchView('explorer-view')">
+                            กลับไปสำรวจสุริยะใหม่
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Certificate Display Overlay (Print View) -->
+                <div id="certificate-overlay" class="certificate-overlay">
+                    <div class="certificate-container-wrapper" id="printable-area">
+                        <div class="certificate-border-outer">
+                            <div class="certificate-border-inner">
+                                <div class="certificate-watermark"></div>
+                                
+                                <div class="cert-header">
+                                    <div class="cert-crest">
+                                        <i class="fa-solid fa-sun cert-crest-icon"></i>
+                                    </div>
+                                    <h2>โรงเรียนบ้านวังพลับ</h2>
+                                    <p class="cert-sub-header">สำนักงานเขตพื้นที่การศึกษาประถมศึกษา</p>
+                                </div>
+                                
+                                <div class="cert-body">
+                                    <h3>เกียรตินิยมบัตรผู้พิทักษ์อวกาศ</h3>
+                                    <p class="cert-given-to">มอบให้แก่</p>
+                                    <h1 class="cert-student-name" id="cert-student-name-display">เด็กชาย สมศักดิ์ รักดาราศาสตร์</h1>
+                                    <p class="cert-for">ผู้ผ่านการฝึกอบรมบทเรียนวิทยาศาสตร์และทำแบบทดสอบวิชาดาราศาสตร์ ป.4</p>
+                                    <p class="cert-theme-title">"ท่องแดนดาราศาสตร์: ระบบสุริยะบ้านของเรา"</p>
+                                    <p class="cert-congratulations">ได้คะแนนเต็มในหมวดหมู่ระบบสุริยะและการเกิดน้ำขึ้น-น้ำลง</p>
+                                </div>
+
+                                <div class="cert-signatures">
+                                    <div class="signature-box">
+                                        <div class="sig-line"></div>
+                                        <p class="sig-name">( นายสุทธิพงษ์ อนุสรณ์ประดิษฐ์ )</p>
+                                        <p class="sig-title">ผู้จัดทำและครูผู้สอนวิชาดาราศาสตร์</p>
+                                    </div>
+                                    
+                                    <div class="signature-box">
+                                        <div class="sig-line"></div>
+                                        <p class="sig-name">( ............................................ )</p>
+                                        <p class="sig-title">ผู้อำนวยการโรงเรียนบ้านวังพลับ</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cert-action-buttons">
+                        <button class="btn btn-primary" id="btn-print-certificate">
+                            <i class="fa-solid fa-print"></i> พิมพ์เกียรติบัตร
+                        </button>
+                        <button class="btn btn-secondary" onclick="closeCertificate()">
+                            ปิดหน้าต่างนี้
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. LEADERBOARD VIEW -->
+        <section id="leaderboard-view" class="view-section">
+            <div class="leaderboard-container">
+                <div class="section-title">
+                    <h2><i class="fa-solid fa-ranking-star text-neon-yellow"></i> กระดานเกียรติยศผู้พิทักษ์อวกาศ</h2>
+                    <p>คะแนนสะสมของเหล่านักบินอวกาศ โรงเรียนบ้านวังพลับ ทำแบบทดสอบให้ได้คะแนนเต็ม 10 และบันทึกสถิติของน้องๆ ได้ที่นี่เลย!</p>
+                </div>
+                
+                <div class="leaderboard-card-wrapper">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th class="th-rank">อันดับ</th>
+                                <th class="th-name">ชื่อผู้เล่น</th>
+                                <th class="th-score">คะแนนเต็ม 10</th>
+                                <th class="th-date">วันที่ทดสอบ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-tbody">
+                            <!-- Dynamic Leaderboard rows -->
+                        </tbody>
+                    </table>
+                    
+                    <div id="leaderboard-empty" class="leaderboard-empty-message">
+                        <i class="fa-solid fa-users-slash text-neon-pink"></i>
+                        <p>ยังไม่มีสถิติคะแนนบันทึกไว้ในระบบตอนนี้นะจ๊ะ มาทำแบบทดสอบเพื่อขึ้นกระดานเป็นอันดับแรกกันเลย!</p>
+                    </div>
+                </div>
+                
+                <div class="leaderboard-controls">
+                    <button class="btn btn-primary" onclick="switchView('quiz-view')">
+                        <i class="fa-solid fa-play"></i> เริ่มทำแบบทดสอบใหม่
+                    </button>
+                    <button class="btn btn-secondary" id="btn-clear-leaderboard" style="border-color: rgba(255, 0, 127, 0.4); color: var(--neon-pink)">
+                        <i class="fa-solid fa-trash-can"></i> ล้างกระดานคะแนน
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer with credits -->
+    <footer class="spaceship-footer">
+        <p>© 2026 วิชาดาราศาสตร์ ป.4 โรงเรียนบ้านวังพลับ - สื่อการเรียนรู้แบบโต้ตอบเชิงรุก (Active Learning)</p>
+        <p class="credits-author">จัดทำโดย: <span class="creator-name">นายสุทธิพงษ์ อนุสรณ์ประดิษฐ์</span> | ระบบจำลองดาราศาสตร์เพื่อการศึกษา</p>
+    </footer>
+
+    <!-- Web Application Logic Script -->
+    <script src="script.js"></script>
+</body>
+</html>

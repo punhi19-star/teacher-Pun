@@ -1,0 +1,2158 @@
+/* ==========================================================================
+   Cosmic Stylesheet: ท่องแดนดาราศาสตร์ (Astronomy CAI Grade 4)
+   Aesthetics: Deep Space Dark Mode, Neon Glows, Glassmorphism Dashboard
+   ========================================================================== */
+
+/* --- CSS VARIABLES & TOKENS --- */
+:root {
+    --bg-dark: #05070f;
+    --bg-card: rgba(13, 20, 38, 0.65);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(0, 242, 254, 0.4);
+    
+    /* Neon Palettes */
+    --neon-blue: #00f2fe;
+    --neon-pink: #ff007f;
+    --neon-green: #39ff14;
+    --neon-orange: #ff6600;
+    --neon-yellow: #ffd700;
+    --text-color: #e2e8f0;
+    --text-muted: #94a3b8;
+    
+    /* Font families */
+    --font-thai: 'Kanit', sans-serif;
+    --font-sci: 'Orbitron', sans-serif;
+    
+    --header-height: 70px;
+    --footer-height: 60px;
+}
+
+/* --- BASE & UTILITIES --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: var(--font-thai);
+    background-color: var(--bg-dark);
+    color: var(--text-color);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* --- ANIMATED STARFIELD BACKGROUND --- */
+.cosmic-theme {
+    position: relative;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    min-height: 100vh;
+}
+
+#stars, #stars2, #stars3 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Simulated Stars using Radial Gradients & Shadows */
+#stars {
+    background: transparent url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8Y2lyY2xlIGN4PSIyIiBjeT0iMiIgcj0iMSIgZmlsbD0iI2ZmZiIgZmlsbC1vcGFjaXR5PSIwLjMiLz4KPC9zdmc+') repeat;
+    opacity: 0.8;
+    animation: starsRotate 200s linear infinite;
+}
+
+#stars2 {
+    background: transparent url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCI+CjxjaXJjbGUgY3g9IjUiIGN5PSI1IiByPSIxLjUiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC42Ii8+Cjwvc3ZnPg==') repeat;
+    opacity: 0.5;
+    animation: starsRotate 120s linear infinite;
+}
+
+#stars3 {
+    background: transparent url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+CjxjaXJjbGUgY3g9IjEwIiBjeT0iMTAiIHI9IjIiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC44Ii8+Cjwvc3ZnPg==') repeat;
+    opacity: 0.3;
+    animation: starsRotate 80s linear infinite;
+}
+
+@keyframes starsRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* --- SPACESHIP HEADER & DASHBOARD --- */
+.spaceship-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background: rgba(8, 12, 24, 0.85);
+    backdrop-filter: blur(15px);
+    border-bottom: 2px solid rgba(0, 242, 254, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-avatar {
+    font-size: 26px;
+    color: var(--neon-blue);
+    filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.6));
+    animation: bounce 3s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.logo-text h1 {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sub-logo {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 300;
+    display: block;
+}
+
+/* Dashboard Nav Tabs */
+.dashboard-nav {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+    padding: 8px 16px;
+    font-family: var(--font-thai);
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-btn i {
+    font-size: 14px;
+}
+
+.nav-btn:hover {
+    color: var(--text-color);
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn.active {
+    color: #fff;
+    background: linear-gradient(135deg, rgba(0, 242, 254, 0.2) 0%, rgba(0, 242, 254, 0.05) 100%);
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+    text-shadow: 0 0 8px rgba(0, 242, 254, 0.5);
+}
+
+.audio-panel {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#sound-toggle-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+#sound-toggle-btn:hover {
+    background: rgba(0, 242, 254, 0.1);
+    border-color: var(--neon-blue);
+    color: var(--neon-blue);
+}
+
+.creator-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 11px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 15px;
+}
+
+.creator-badge .school {
+    color: var(--neon-pink);
+    font-weight: 500;
+}
+
+.creator-badge .grade {
+    color: var(--text-muted);
+}
+
+/* --- SPACESHIP VIEWPORT --- */
+.spaceship-viewport {
+    margin-top: var(--header-height);
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+    position: relative;
+    z-index: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.view-section {
+    display: none;
+    animation: slideIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.view-section.active {
+    display: block;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- BUTTONS --- */
+.btn {
+    font-family: var(--font-thai);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--neon-blue) 0%, #0072ff 100%);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 242, 254, 0.6);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-color);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-yellow {
+    background: linear-gradient(135deg, var(--neon-yellow) 0%, #ff8c00 100%);
+    color: #05070f;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+.btn-yellow:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+}
+
+/* --- 1. WELCOME VIEW STYLES --- */
+.welcome-container {
+    padding: 20px 0;
+}
+
+.welcome-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.tagline {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--neon-blue);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+}
+
+.welcome-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: 10px;
+    background: linear-gradient(135deg, #ffffff 30%, #a5f3fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.meta-divider {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+    border-radius: 2px;
+    margin: 20px auto 0;
+}
+
+.welcome-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 30px;
+}
+
+.welcome-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.welcome-card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 40px rgba(0, 242, 254, 0.05);
+}
+
+.welcome-card h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.welcome-card p {
+    color: var(--text-color);
+    line-height: 1.8;
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.cai-info {
+    margin-top: 25px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-item .label {
+    color: var(--text-muted);
+}
+
+.info-item .val {
+    color: var(--neon-blue);
+    font-weight: 500;
+}
+
+.mission-list {
+    list-style: none;
+    margin-bottom: 25px;
+}
+
+.mission-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.mission-num {
+    background: linear-gradient(135deg, var(--neon-pink) 0%, #cc0066 100%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-family: var(--font-sci);
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.4);
+}
+
+.mission-desc {
+    font-size: 13.5px;
+    color: var(--text-color);
+    line-height: 1.4;
+}
+
+.start-mission-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 14px;
+    font-size: 17px;
+}
+
+/* --- 2. SOLAR SYSTEM EXPLORER STYLES --- */
+.explorer-layout {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 25px;
+    align-items: stretch;
+}
+
+.space-screen {
+    background: rgba(5, 7, 15, 0.85);
+    border: 2px solid rgba(0, 242, 254, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 40px rgba(0, 242, 254, 0.08);
+}
+
+.screen-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 12px;
+    margin-bottom: 15px;
+    z-index: 10;
+}
+
+.orbit-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-orbit-control {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.btn-orbit-control:hover {
+    background: var(--neon-blue);
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+}
+
+.speed-slider-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.speed-slider-wrap input[type=range] {
+    width: 80px;
+    accent-color: var(--neon-blue);
+    cursor: pointer;
+}
+
+/* Solar System Interactive Area */
+.solar-system-map {
+    position: relative;
+    flex-grow: 1;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Central glowing Sun */
+.sun-glow {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: radial-gradient(circle, rgba(255,230,0,0.4) 0%, rgba(255,100,0,0.1) 60%, rgba(0,0,0,0) 100%);
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+    animation: solarPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes solarPulse {
+    0% { transform: scale(0.9); opacity: 0.6; }
+    100% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Orbits Ring Templates */
+.orbit-ring {
+    position: absolute;
+    border: 1px dashed rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+/* Planet orbit sizes */
+.mercury-orbit { width: 100px; height: 100px; z-index: 8; }
+.venus-orbit   { width: 140px; height: 140px; z-index: 7; }
+.earth-orbit   { width: 190px; height: 190px; z-index: 6; }
+.mars-orbit    { width: 240px; height: 240px; z-index: 5; }
+.jupiter-orbit { width: 330px; height: 330px; z-index: 4; }
+.saturn-orbit  { width: 410px; height: 410px; z-index: 3; }
+.uranus-orbit  { width: 470px; height: 470px; z-index: 2; }
+.neptune-orbit { width: 530px; height: 530px; z-index: 1; }
+
+.asteroid-belt-visual {
+    position: absolute;
+    width: 286px;
+    height: 286px;
+    border: 8px double rgba(255, 255, 255, 0.03);
+    border-radius: 50%;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.asteroid-label {
+    position: absolute;
+    bottom: 5px;
+    font-size: 8px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 1px;
+}
+
+/* Celestial Bodies General */
+.celestial-body {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: transform 0.2s ease;
+}
+
+.celestial-body:hover {
+    transform: scale(1.2);
+    z-index: 100;
+}
+
+.celestial-body:hover .body-label {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.85);
+    border-color: var(--neon-blue);
+}
+
+.body-sphere {
+    border-radius: 50%;
+    box-shadow: inset -3px -3px 6px rgba(0,0,0,0.8);
+}
+
+.body-label {
+    font-size: 10px;
+    color: var(--text-color);
+    background: rgba(8, 12, 24, 0.7);
+    padding: 1px 6px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 4px;
+    white-space: nowrap;
+    opacity: 0.8;
+    transition: all 0.2s ease;
+}
+
+/* Planet Custom Graphics & Positions */
+.sun {
+    width: 50px;
+    height: 50px;
+    z-index: 10;
+}
+.sun .body-sphere {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #ffea79 0%, #ff8400 70%, #ff3c00 100%);
+    box-shadow: 0 0 25px #ff5d00;
+}
+
+.mercury { width: 12px; height: 12px; }
+.mercury .body-sphere {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #b1b5be 0%, #767a84 100%);
+}
+
+.venus { width: 18px; height: 18px; }
+.venus .body-sphere {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #e3bb76 0%, #a4762b 100%);
+}
+
+.earth { width: 22px; height: 22px; }
+.earth .body-sphere {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #4fa4f6 0%, #0c61b2 80%, #094783 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    position: relative;
+}
+
+.mars { width: 16px; height: 16px; }
+.mars .body-sphere {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #f48061 0%, #bb3e1c 100%);
+}
+
+.jupiter { width: 38px; height: 38px; }
+.jupiter .body-sphere {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #d8ca9d, #b59265, #d8ca9d, #8f653b);
+    border-radius: 50%;
+}
+
+.saturn { width: 44px; height: 32px; }
+.saturn .body-sphere {
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, #e2cf9f 0%, #a49162 100%);
+    position: relative;
+    margin: 0 auto;
+}
+.saturn-rings {
+    position: absolute;
+    width: 50px;
+    height: 10px;
+    border: 4px solid rgba(226, 207, 159, 0.5);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    pointer-events: none;
+}
+
+.uranus { width: 26px; height: 26px; }
+.uranus .body-sphere {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #aef1f9 0%, #61c5d9 100%);
+}
+
+.neptune { width: 25px; height: 25px; }
+.neptune .body-sphere {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #6892fc 0%, #1c46bb 100%);
+}
+
+/* Info Console Right */
+.info-console {
+    background: var(--bg-card);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.info-prompt {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-grow: 1;
+    padding: 30px 10px;
+}
+
+.info-prompt.active {
+    display: flex;
+}
+
+.info-prompt i {
+    font-size: 44px;
+    color: var(--neon-blue);
+    margin-bottom: 20px;
+}
+
+.pulse-animation {
+    animation: p-pulse 2s infinite;
+}
+
+@keyframes p-pulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.5; }
+}
+
+.info-prompt h4 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.info-prompt p {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.other-wonders-shortcuts {
+    width: 100%;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 20px;
+}
+
+.other-wonders-shortcuts h5 {
+    font-size: 13.5px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.badge-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.wonder-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--text-color);
+    padding: 10px;
+    border-radius: 10px;
+    font-family: var(--font-thai);
+    font-size: 13.5px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wonder-btn:hover {
+    background: rgba(0, 242, 254, 0.1);
+    border-color: var(--neon-blue);
+    color: var(--neon-blue);
+    padding-left: 15px;
+}
+
+.wonder-btn::after {
+    content: "➔";
+    font-size: 11px;
+    opacity: 0.6;
+}
+
+/* Dynamic Planet Card Styles */
+.info-card-container {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.info-card-container.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.card-title-group h3 {
+    font-size: 26px;
+    font-weight: 700;
+    color: white;
+}
+
+.card-title-group span {
+    font-size: 13px;
+    font-family: var(--font-sci);
+    color: var(--text-muted);
+}
+
+.type-badge {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.type-badge.terrestrial {
+    background: rgba(0, 242, 254, 0.15);
+    border: 1px solid var(--neon-blue);
+    color: var(--neon-blue);
+}
+
+.type-badge.gas {
+    background: rgba(255, 0, 127, 0.15);
+    border: 1px solid var(--neon-pink);
+    color: var(--neon-pink);
+}
+
+.type-badge.wonder {
+    background: rgba(255, 102, 0, 0.15);
+    border: 1px solid var(--neon-orange);
+    color: var(--neon-orange);
+}
+
+.card-visual-summary {
+    background: rgba(0, 0, 0, 0.4);
+    height: 140px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Detailed big planet preview in card */
+.card-illustration {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: inset -5px -5px 12px rgba(0,0,0,0.9);
+}
+
+.card-illustration.sun-preview {
+    background: radial-gradient(circle, #ffea79 0%, #ff8400 70%, #ff3c00 100%);
+    box-shadow: 0 0 30px rgba(255, 100, 0, 0.8);
+    width: 90px;
+    height: 90px;
+}
+.card-illustration.mercury-preview { background: radial-gradient(circle, #b1b5be 0%, #5d616a 100%); }
+.card-illustration.venus-preview { background: radial-gradient(circle, #e3bb76 0%, #875c1d 100%); }
+.card-illustration.earth-preview { 
+    background: radial-gradient(circle, #4fa4f6 0%, #0c61b2 80%, #094783 100%);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+}
+.card-illustration.mars-preview { background: radial-gradient(circle, #f48061 0%, #a43111 100%); }
+.card-illustration.jupiter-preview { background: linear-gradient(to bottom, #d8ca9d, #a07d52, #d8ca9d, #7c5228); }
+.card-illustration.saturn-preview { 
+    background: radial-gradient(circle, #e2cf9f 0%, #8d7b4e 100%); 
+    position: relative;
+}
+.card-illustration.saturn-preview::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 20px;
+    border: 6px solid rgba(226, 207, 159, 0.5);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-12deg);
+}
+.card-illustration.uranus-preview { background: radial-gradient(circle, #aef1f9 0%, #4daebf 100%); }
+.card-illustration.neptune-preview { background: radial-gradient(circle, #6892fc 0%, #15399e 100%); }
+.card-illustration.pluto-preview { background: radial-gradient(circle, #e2d1c3 0%, #8b7d72 100%); }
+.card-illustration.asteroids-preview { 
+    background: transparent;
+    box-shadow: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.card-illustration.comet-preview {
+    background: transparent;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-body #card-description {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+.planet-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 15px;
+    border-radius: 8px;
+    border-left: 3px solid var(--neon-blue);
+}
+
+.stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.stat-val {
+    font-size: 13.5px;
+    color: white;
+    font-weight: 500;
+    margin-top: 3px;
+}
+
+.card-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.card-footer button {
+    width: 100%;
+    justify-content: center;
+}
+
+/* --- 3. CLASSIFICATION GAME STYLES --- */
+.game-container {
+    padding: 10px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: var(--text-muted);
+    font-size: 14.5px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.game-playground {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.planets-source-panel {
+    background: rgba(13, 20, 38, 0.45);
+    border: 1px dashed rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.planets-source-panel h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.planets-drag-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    flex-grow: 1;
+}
+
+/* Planet Drag Item Cards */
+.planet-drag-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: grab;
+    user-select: none;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.planet-drag-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(0, 242, 254, 0.3);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transform: translateY(-2px);
+}
+
+.planet-drag-item:active {
+    cursor: grabbing;
+    opacity: 0.6;
+}
+
+.drag-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-bottom: 6px;
+    box-shadow: inset -1px -1px 4px rgba(0,0,0,0.6);
+}
+
+.drag-label {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Colors for game items */
+.drag-dot.mercury { background: radial-gradient(circle, #b1b5be, #5d616a); }
+.drag-dot.venus { background: radial-gradient(circle, #e3bb76, #875c1d); }
+.drag-dot.earth { background: radial-gradient(circle, #4fa4f6, #0c61b2); }
+.drag-dot.mars { background: radial-gradient(circle, #f48061, #a43111); }
+.drag-dot.jupiter { background: linear-gradient(to bottom, #d8ca9d, #a07d52); }
+.drag-dot.saturn { background: radial-gradient(circle, #e2cf9f, #8d7b4e); }
+.drag-dot.uranus { background: radial-gradient(circle, #aef1f9, #4daebf); }
+.drag-dot.neptune { background: radial-gradient(circle, #6892fc, #15399e); }
+
+/* Targets Panel Dropzones */
+.game-targets-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.dropzone-box {
+    background: var(--bg-card);
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 380px;
+    transition: all 0.3s ease;
+}
+
+.dropzone-box.dragover {
+    border-color: var(--neon-blue);
+    background: rgba(0, 242, 254, 0.03);
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.1);
+}
+
+.dropzone-box#dropzone-gas.dragover {
+    border-color: var(--neon-pink);
+    background: rgba(255, 0, 127, 0.03);
+    box-shadow: 0 0 25px rgba(255, 0, 127, 0.1);
+}
+
+.dropzone-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.dropzone-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.dropzone-header h3 {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.dropzone-hint {
+    font-size: 11px;
+    color: var(--text-muted);
+}
+
+.dropzone-slots {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-content: start;
+    min-height: 250px;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* Draggable item when dropped inside slot */
+.dropzone-slots .planet-drag-item {
+    flex-direction: row;
+    gap: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.dropzone-slots .planet-drag-item .drag-dot {
+    margin-bottom: 0;
+    width: 18px;
+    height: 18px;
+}
+
+.game-control-panel {
+    background: rgba(8, 12, 24, 0.8);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#game-score-display {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--neon-blue);
+}
+
+#game-score-display span {
+    font-family: var(--font-sci);
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.game-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+/* Feedback Modal styles */
+.feedback-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(3, 4, 8, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.feedback-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.feedback-card {
+    background: var(--bg-card);
+    border: 2px solid var(--neon-blue);
+    border-radius: 24px;
+    padding: 40px;
+    max-width: 480px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 242, 254, 0.2);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.feedback-overlay.active .feedback-card {
+    transform: scale(1);
+}
+
+#feedback-icon-container {
+    font-size: 54px;
+    color: var(--neon-green);
+    margin-bottom: 20px;
+}
+
+.feedback-card h4 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.feedback-card p {
+    font-size: 14.5px;
+    color: var(--text-color);
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* --- 4. TIDE SIMULATOR STYLES --- */
+.tide-container {
+    padding: 10px 0;
+}
+
+.tide-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 25px;
+}
+
+.tide-simulator-screen {
+    background: rgba(5, 7, 15, 0.8);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.simulator-modes {
+    display: flex;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 2px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.btn-simulator-mode {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-thai);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-simulator-mode.active {
+    background: var(--neon-blue);
+    color: black;
+    box-shadow: 0 0 8px rgba(0, 242, 254, 0.3);
+}
+
+.canvas-container {
+    background: #02040a;
+    border-radius: 12px;
+    margin: 15px 0;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#tide-simulator-canvas {
+    max-width: 100%;
+    display: block;
+    background: transparent;
+}
+
+.slider-control-panel {
+    background: rgba(0,0,0,0.2);
+    padding: 12px 20px;
+    border-radius: 10px;
+}
+
+.control-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.control-row label {
+    font-size: 13.5px;
+    white-space: nowrap;
+}
+
+.control-row input[type=range] {
+    flex-grow: 1;
+    accent-color: var(--neon-blue);
+    cursor: pointer;
+}
+
+.angle-display {
+    font-family: var(--font-sci);
+    font-size: 14px;
+    color: var(--neon-blue);
+    width: 45px;
+    text-align: right;
+}
+
+.tide-explanation-console {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tide-explanation-console h3 {
+    font-size: 22px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding-bottom: 12px;
+}
+
+.tide-live-status {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 15px 20px;
+}
+
+.status-title {
+    font-size: 11px;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.tide-badge-active {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14.5px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border: 1px solid transparent;
+}
+
+.tide-badge-active.spring-tide {
+    background: rgba(255, 0, 127, 0.1);
+    border-color: var(--neon-pink);
+    color: #ff3399;
+}
+
+.tide-badge-active.neap-tide {
+    background: rgba(0, 242, 254, 0.1);
+    border-color: var(--neon-blue);
+    color: var(--neon-blue);
+}
+
+#tide-status-detail {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.scientific-explanation h4 {
+    font-size: 15px;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.scientific-explanation ul {
+    list-style: none;
+}
+
+.scientific-explanation ul li {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 12px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.scientific-explanation ul li::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    color: var(--neon-blue);
+    font-size: 10px;
+}
+
+.scientific-explanation ul li ul {
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.scientific-explanation ul li ul li::before {
+    content: "•";
+    color: var(--text-muted);
+}
+
+.text-neon-pink { color: var(--neon-pink); }
+.text-neon-blue { color: var(--neon-blue); }
+
+/* --- 5. QUIZ VIEW STYLES --- */
+.quiz-outer-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.quiz-card {
+    display: none;
+    background: var(--bg-card);
+    backdrop-filter: blur(15px);
+    border: 2px solid var(--border-color);
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.quiz-card.active {
+    display: block;
+}
+
+.quiz-icon {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.quiz-card h2 {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.quiz-card p {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14.5px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14.5px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.form-group input[type=text] {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    font-family: var(--font-thai);
+    font-size: 16px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.form-group input[type=text]:focus {
+    outline: none;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+}
+
+.input-error {
+    color: var(--neon-pink);
+    font-size: 12px;
+    margin-top: 6px;
+    display: none;
+}
+
+.btn-large {
+    width: 100%;
+    justify-content: center;
+    padding: 15px;
+    font-size: 17px;
+}
+
+/* Quiz Question Running screen */
+.quiz-progress-bar-wrap {
+    margin-bottom: 30px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.progress-bar-track {
+    background: rgba(255,255,255,0.08);
+    height: 6px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
+    height: 100%;
+    width: 20%;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.question-container h3 {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: white;
+}
+
+.options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.option-btn {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 20px;
+    text-align: left;
+    font-family: var(--font-thai);
+    font-size: 14.5px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.option-prefix {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-family: var(--font-sci);
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.option-btn:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.2);
+    transform: translateX(3px);
+}
+
+.option-btn.selected {
+    background: rgba(0, 242, 254, 0.1);
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+}
+
+.option-btn.selected .option-prefix {
+    background: var(--neon-blue);
+    color: black;
+}
+
+.quiz-card-footer {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 20px;
+}
+
+.quiz-card-footer button {
+    min-width: 130px;
+    justify-content: center;
+}
+
+/* Quiz Result styles */
+.result-celebration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.result-trophy-icon {
+    font-size: 60px;
+    color: var(--neon-yellow);
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
+    margin-bottom: 20px;
+}
+
+.score-display {
+    background: rgba(0,0,0,0.2);
+    border-radius: 15px;
+    padding: 10px 30px;
+    margin: 15px 0;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.score-number {
+    font-family: var(--font-sci);
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--neon-green);
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+}
+
+.score-max {
+    font-size: 18px;
+    color: var(--text-muted);
+}
+
+#result-comment {
+    font-size: 14.5px;
+    color: var(--text-color);
+}
+
+.claim-box {
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 140, 0, 0.03) 100%);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.claim-info h3 {
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--neon-yellow);
+    margin-bottom: 4px;
+}
+
+.claim-info p {
+    text-align: left;
+    margin-bottom: 0;
+    font-size: 12px;
+}
+
+.quiz-result-buttons {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.quiz-result-buttons button {
+    flex-grow: 1;
+    justify-content: center;
+}
+
+/* Certificate print/display view overlay */
+.certificate-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(3, 4, 8, 0.95);
+    backdrop-filter: blur(15px);
+    z-index: 20000;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.certificate-overlay.active {
+    display: flex;
+}
+
+.certificate-container-wrapper {
+    background: #fff;
+    color: #333;
+    width: 842px; /* Landscape A4 Aspect */
+    height: 595px;
+    padding: 25px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+    box-sizing: border-box;
+}
+
+.certificate-border-outer {
+    border: 15px solid #23395d;
+    height: 100%;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.certificate-border-inner {
+    border: 3px double #b8860b;
+    height: 100%;
+    width: 100%;
+    padding: 25px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    background-color: #fdfbf7;
+}
+
+.certificate-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 320px;
+    height: 320px;
+    background: transparent url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCI+CjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQwIiBmaWxsPSJub25lIiBzdHJva2U9IiNlZWUiIHN0cm9rZS13aWR0aD0iMSIvPgo8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI4IiBmaWxsPSIjZWVlIi8+CjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjMiIGZpbGw9IiNlZWUiLz4KPC9zdmc+') no-repeat center;
+    background-size: contain;
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+.cert-header h2 {
+    font-family: var(--font-thai);
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a2a44;
+}
+
+.cert-sub-header {
+    font-family: var(--font-thai);
+    font-size: 11px;
+    color: #666;
+    margin-top: 2px;
+}
+
+.cert-crest {
+    margin-bottom: 10px;
+}
+
+.cert-crest-icon {
+    font-size: 38px;
+    color: #b8860b;
+}
+
+.cert-body {
+    margin-top: 30px;
+}
+
+.cert-body h3 {
+    font-family: var(--font-thai);
+    font-size: 26px;
+    font-weight: 700;
+    color: #b8860b;
+    letter-spacing: 1px;
+}
+
+.cert-given-to {
+    font-family: var(--font-thai);
+    font-size: 13px;
+    font-style: italic;
+    color: #555;
+    margin-top: 15px;
+}
+
+.cert-student-name {
+    font-family: var(--font-thai);
+    font-size: 30px;
+    font-weight: 700;
+    color: #1a2a44;
+    border-bottom: 2px solid #b8860b;
+    display: inline-block;
+    padding: 0 40px 5px;
+    margin: 10px 0;
+}
+
+.cert-for {
+    font-family: var(--font-thai);
+    font-size: 13px;
+    color: #444;
+    margin-top: 15px;
+}
+
+.cert-theme-title {
+    font-family: var(--font-thai);
+    font-size: 16px;
+    font-weight: bold;
+    color: #23395d;
+    margin-top: 5px;
+}
+
+.cert-congratulations {
+    font-family: var(--font-thai);
+    font-size: 12px;
+    color: #2e7d32;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.cert-signatures {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 45px;
+    padding: 0 50px;
+}
+
+.signature-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+}
+
+.sig-line {
+    border-top: 1px solid #777;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.sig-name {
+    font-family: var(--font-thai);
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+}
+
+.sig-title {
+    font-family: var(--font-thai);
+    font-size: 10px;
+    color: #666;
+}
+
+.cert-action-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+/* --- FOOTER STYLES --- */
+.spaceship-footer {
+    height: var(--footer-height);
+    background: rgba(4, 6, 12, 0.9);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-muted);
+    z-index: 10;
+    position: relative;
+    gap: 4px;
+}
+
+.credits-author {
+    color: var(--text-color);
+}
+
+.creator-name {
+    color: var(--neon-blue);
+    font-weight: 500;
+}
+
+/* --- PRINT CUSTOM STYLING --- */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #printable-area, #printable-area * {
+        visibility: visible;
+    }
+    #printable-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100% !important;
+        height: 100% !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+    .cert-action-buttons {
+        display: none !important;
+    }
+    .certificate-overlay {
+        background: transparent !important;
+        padding: 0 !important;
+    }
+}
+
+/* --- RESPONSIVE ADAPTATIONS --- */
+@media (max-width: 1024px) {
+    .welcome-grid {
+        grid-template-columns: 1fr;
+    }
+    .explorer-layout {
+        grid-template-columns: 1fr;
+    }
+    .tide-layout {
+        grid-template-columns: 1fr;
+    }
+    .game-playground {
+        grid-template-columns: 1fr;
+    }
+    .spaceship-header {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .spaceship-header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        gap: 10px;
+    }
+    .dashboard-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+    .nav-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    .audio-panel {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .spaceship-viewport {
+        margin-top: 140px;
+        padding: 15px;
+    }
+}
+
+/* --- 6. LEADERBOARD VIEW STYLES --- */
+.leaderboard-container {
+    padding: 10px 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.leaderboard-card-wrapper {
+    background: var(--bg-card);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    margin-bottom: 25px;
+    overflow-x: auto;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.leaderboard-table th, 
+.leaderboard-table td {
+    padding: 14px 18px;
+    font-size: 14.5px;
+}
+
+.leaderboard-table th {
+    font-weight: 600;
+    color: var(--neon-blue);
+    border-bottom: 2px solid rgba(0, 242, 254, 0.2);
+    text-transform: uppercase;
+    font-size: 13.5px;
+}
+
+.leaderboard-table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background-color 0.2s ease;
+}
+
+.leaderboard-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.leaderboard-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* Ranks Styles */
+.th-rank, .td-rank {
+    width: 80px;
+    text-align: center;
+}
+
+.rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-family: var(--font-sci);
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.rank-badge.rank-1 {
+    background: linear-gradient(135deg, var(--neon-yellow) 0%, #ff8c00 100%);
+    color: #05070f;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.rank-badge.rank-2 {
+    background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+    color: #05070f;
+    box-shadow: 0 0 10px rgba(226, 232, 240, 0.5);
+}
+
+.rank-badge.rank-3 {
+    background: linear-gradient(135deg, #d97706 0%, #78350f 100%);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(217, 119, 6, 0.5);
+}
+
+.rank-badge.rank-other {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+}
+
+.td-name {
+    font-weight: 500;
+    color: white;
+}
+
+.td-score {
+    font-family: var(--font-sci);
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--neon-green);
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.2);
+}
+
+.td-date {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* Empty State */
+.leaderboard-empty-message {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.leaderboard-empty-message.active {
+    display: flex;
+}
+
+.leaderboard-empty-message i {
+    font-size: 50px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 10px rgba(255, 0, 127, 0.3));
+}
+
+.leaderboard-empty-message p {
+    font-size: 14.5px;
+    color: var(--text-muted);
+}
+
+.leaderboard-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
